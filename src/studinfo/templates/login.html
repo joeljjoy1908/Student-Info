@@ -1,0 +1,137 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{%static 'https://fonts.googleapis.com/css?family=Rubik:300,400,500' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}">
+
+    <link rel="stylesheet" href="{%static 'fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{%static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{%static 'fonts/flaticon/font/flaticon.css' %}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+  </head>
+  <body>
+
+    <header role="banner" >
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <div class="container" style=" margin-top: 20px;margin-bottom: 20px;">
+          <a class="navbar-brand absolute" href="/student">Student Info SYSTEM</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+            <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <ul class="navbar-nav mx-auto absolute-right">
+                             {% if user.is_authenticated %}
+                                <li class="nav-item ">
+                                    <a   href="/student/logout">{{user.username}} Logout</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item ">
+                                    <a  href="/student/login">Log In &nbsp </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a  href="/student/studentlog">SignUp </a>
+                                </li>
+                                {% endif %}
+
+            </ul>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+
+    <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="1.0" style="background-image: url({%static 'images/big_image_2.jpg'%});">
+
+
+    <!-- END section -->
+
+    <section class="site-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="form-wrap">
+              <h2 class="mb-4">Log in with your account</h2>
+              <form action="/student/signin_verify" method="post">
+                {% csrf_token %}
+                <div class="row ">
+                  <div class="col-md-12 form-group">
+                    <label for="name">Roll Number</label>
+                    <input class="form-control py-2" type="text" placeholder="Roll no" name="username">
+                  </div>
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-12 form-group">
+                    <label for="name">Password</label>
+                    <input type="password" placeholder="password" class="form-control py-2" name="password">
+                  </div>
+                </div>
+
+                <div class="row ">
+                  <div class="col-md-6 form-group">
+                    <input type="submit" value="Login" class="btn btn-primary px-5 py-2">
+                  </div>
+                </div>
+              </form>
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+    <footer class="site-footer border-top">
+      <div class="container">
+
+        </div>
+        <div class="row pt-5">
+          <div class="col-md-12 text-center copyright">
+
+            <p class="float-md-left"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights  reserved   JMartin<i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://google.com" target="_blank" class="text-primary">JMartin</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <p class="float-md-right">
+              <a href="#" class="fa fa-facebook p-2"></a>
+              <a href="#" class="fa fa-twitter p-2"></a>
+              <a href="#" class="fa fa-linkedin p-2"></a>
+              <a href="#" class="fa fa-instagram p-2"></a>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+
+
+
+    <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{%static 'js/jquery-migrate-3.0.0.js' %}"></script>
+    <script src="{%static 'js/popper.min.js' %}"></script>
+    <script src="{%static 'js/bootstrap.min.js' %}"></script>
+    <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{%static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{%static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{%static 'js/jquery.animateNumber.min.js' %}"></script>
+
+    <script src="{%static 'js/main.js' %}"></script>
+  </body>
+</html>
